@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "audio-transcriber"
+version = "0.1.0"
+description = "Offline audio-to-SRT pipeline: faster-whisper transcription + Argos Translate translation"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = [
+    "faster-whisper>=0.10",
+    "argostranslate>=1.9",
+    "flask>=3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+lingua-cli  = "audio_transcriber.cli:main"
+lingua-web  = "audio_transcriber.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
